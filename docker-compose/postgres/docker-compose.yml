@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+    postgres:
+        image: postgres
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: 'postgres'
+        networks:
+            - postgres
+        volumes:
+            - database_data:/var/lib/postgresql/data
+
+    pgadmin:
+        image: dpage/pgadmin4
+        restart: unless-stopped
+        environment:
+            PGADMIN_DEFAULT_EMAIL: email@example.com
+            PGADMIN_DEFAULT_PASSWORD: pgadmin
+        volumes:
+            - pgadmin:/root/.pgadmin
+        ports:
+            - "${PGADMIN_PORT:-5050}:80"
+        networks:
+            - postgres
+
+networks:
+    postgres:
+        driver: bridge
+
+volumes:
+    database_data:
+    pgadmin:
+
