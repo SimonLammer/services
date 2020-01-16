@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    jupyter-scipy_notebook:
+        image: jupyter/scipy-notebook
+        restart: unless-stopped
+        ports:
+            - 8888:8888
+        volumes:
+            - ./data/work:/home/jovyan/work
+
