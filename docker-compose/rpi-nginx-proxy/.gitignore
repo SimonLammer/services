@@ -1,0 +1,7 @@
+data/certs/*
+!data/certs/.keep_directory_in_git
+data/challenge/*
+!data/challenge/.keep_directory_in_git
+data/nginx_vhostd/*
+!data/nginx_vhostd/.keep_directory_in_git
+
