@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  gogs:
+    image: hypriot/rpi-gogs-raspbian
+    ports:
+    - 3000
+    - "22222:22" # for git ssh
+    expose:
+    - 3000
+    networks:
+    - proxy-net
+    restart: unless-stopped
+    environment:
+    - VIRTUAL_HOST=myurl.example.com
+    - VIRTUAL_PORT=3000
+    - LETSENCRYPT_HOST=myurl.example.com
+    - LETSENCRYPT_EMAIL=email@example.com
+    volumes:
+    - ./data:/data
+
+networks:
+  proxy-net: # https://github.com/SimonLammer/services/blob/nginx-proxy/docker-compose/rpi-nginx-proxy/docker-compose.yml
+    external:
+      name: proxy-net
+

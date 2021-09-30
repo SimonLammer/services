@@ -1,0 +1,7 @@
+docker-compose.yml
+data/*
+!data/gogs
+data/gogs/*
+!data/gogs/conf
+!data/gogs/conf/app.ini.example
+

@@ -1,0 +1,41 @@
+RUN_USER = git
+RUN_MODE = prod
+
+[database]
+DB_TYPE = sqlite3
+HOST = 127.0.0.1:3306
+NAME = gogs
+USER = root
+PASSWD = 
+SSL_MODE = disable
+PATH = data/gogs.db
+
+[repository]
+ROOT = /data/repositories
+
+[server]
+DOMAIN = myurl.example.com
+HTTP_PORT = 3000
+ROOT_URL = myurl.example.com/
+SSH_PORT = 22222
+
+[session]
+PROVIDER = file
+
+[log]
+MODE = file
+LEVEL = Info
+
+[security]
+INSTALL_LOCK = false # will be set to true after initial installation
+SECRET_KEY = somekey01234567
+
+[mailer]
+ENABLED = true
+MAILER_TYPE = smtp
+HOST = smtp.gmail.com:465
+USER = example@gmail.com
+FROM = example@gmail.com
+PASSWD = password
+IS_TLS_ENABLED = true
+
