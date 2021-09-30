@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  busybox:
+    image: hypriot/rpi-busybox-httpd
+    ports:
+    - 80
+    expose:
+    - 80
+    networks:
+    - proxy-net
+    restart: always
+    environment:
+    - VIRTUAL_HOST=myurl.example.com
+    - VIRTUAL_PORT=80
+    - LETSENCRYPT_HOST=myurl.example.com
+    - LETSENCRYPT_EMAIL=email@example.com
+
+networks:
+  proxy-net: # https://github.com/SimonLammer/services/blob/nginx-proxy/docker-compose/rpi-nginx-proxy/docker-compose.yml
+    external:
+      name: proxy-net
+
