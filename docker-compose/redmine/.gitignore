@@ -1,0 +1,13 @@
+backups/*
+volumes/postgres/*
+volumes/redmine/files/*
+volumes/redmine/plugins/*
+volumes/redmine/themes/*
+!volumes/**/*.example
+
+docker-compose.yml
+redmine-configuration.yml
+redmine-database.yml
+
+!**/.keep_directory_in_git
+
