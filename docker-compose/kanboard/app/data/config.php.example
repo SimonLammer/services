@@ -1,0 +1,16 @@
+<?php
+
+define('DEBUG', true);
+define('LOG_DRIVER', 'file');
+
+define('PLUGIN_INSTALLER', true);
+
+define('MAIL_CONFIGURATION', true);
+define('MAIL_FROM', 'email@gmail.com');
+define('MAIL_TRANSPORT', 'smtp');
+define('MAIL_SMTP_HOSTNAME', 'smtp.gmail.com');
+define('MAIL_SMTP_PORT', 465);
+define('MAIL_SMTP_ENCRYPTION', 'ssl');
+define('MAIL_SMTP_USERNAME', 'email@gmail.com');
+define('MAIL_SMTP_PASSWORD', 'password');
+

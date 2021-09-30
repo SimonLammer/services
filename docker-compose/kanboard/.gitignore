@@ -1,0 +1,7 @@
+docker-compose.yml
+app/data/*
+app/plugins/*
+app/ssl/*
+!**/.keep_directory_in_git
+!**/*.example
+

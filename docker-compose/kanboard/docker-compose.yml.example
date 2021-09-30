@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  kanboard:
+    container_name: kanboard
+    image: kanboard/kanboard:v1.2.20-alpine_3.12
+    ports:
+    - 80
+    expose:
+    - 80
+    networks:
+    - proxy-net
+    restart: unless-stopped
+    environment:
+    - VIRTUAL_HOST=myurl.example.com
+    - VIRTUAL_PORT=80
+    - LETSENCRYPT_HOST=myurl.example.com
+    - LETSENCRYPT_EMAIL=email@example.com
+    volumes:
+    - ./app/data:/var/www/app/data
+    - ./app/plugins:/var/www/app/plugins
+    - ./app/ssl:/etc/nignx/ssl
+
+networks:
+  proxy-net: # https://github.com/SimonLammer/services/blob/nginx-proxy/docker-compose/rpi-nginx-proxy/docker-compose.yml
+    external:
+      name: proxy-net
+
