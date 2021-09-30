@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  proxy:
+    image: alexanderkrause/rpi-nginx-proxy
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./data/certs:/etc/nginx/certs:ro
+      - &NGINX_VHOSTD ./data/nginx_vhostd:/etc/nginx/vhost.d
+      - &CHALLENGE ./data/challenge:/usr/share/nginx/html
+    networks:
+      - proxy-net
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true
+
+  companion:
+    image: alexanderkrause/rpi-letsencrypt-nginx-proxy-companion
+    restart: always
+    depends_on:
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data/certs:/etc/nginx/certs:rw
+      - *NGINX_VHOSTD
+      - *CHALLENGE
+    networks:
+      - proxy-net
+
+networks:
+   proxy-net: #  https://github.com/nginx-proxy/nginx-proxy/issues/1132
+     name: proxy-net
+
