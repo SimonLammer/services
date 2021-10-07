@@ -2,6 +2,8 @@
 
 Log your server health to a Google Sheet and get notified if something isn't right.
 
+For example, this can be used to get notified if the server looses its internet connection.
+
 ## Setup
 
 1. Create Spreadsheet with 3 Columns:
