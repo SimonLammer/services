@@ -1,3 +1,5 @@
+// https://github.com/SimonLammer/services/tree/master/miscellaneous/server_health
+
 var REPORT_MAIL = 'example@gmail.com';
 var REPORT_SUBJECT = 'Server health not ok';
 var MAX_AGE_S = 70;
