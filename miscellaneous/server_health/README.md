@@ -1,6 +1,6 @@
 # Server Health
 
-Log your server health to a Google Sheet.
+Log your server health to a Google Sheet and get notified if something isn't right.
 
 ## Setup
 
